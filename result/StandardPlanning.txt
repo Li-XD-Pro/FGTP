@@ -1,0 +1,5 @@
+1. MoveTo the right side of the table.
+2. Grasp the cup from the parallel.
+3. PickUp the cup stably.
+4. MoveTo the dining table.
+5. PutDown the cup stably.

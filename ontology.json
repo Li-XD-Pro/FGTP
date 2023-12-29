@@ -1,0 +1,70 @@
+[
+  {
+    "object": "book",
+    "attribute": "has Action Related movable"
+  },
+  {
+    "object": "book",
+    "attribute": "has Color white"
+  },
+  {
+    "object": "book",
+    "attribute": "has Material papermade"
+  },
+  {
+    "object": "book",
+    "attribute": "is on office"
+  },
+  {
+    "object": "book",
+    "attribute": "has Shape boxshaped"
+  },
+  {
+    "object": "book",
+    "attribute": "has Action Related graspable"
+  },
+  {
+    "object": "cup",
+    "attribute": "has Color green"
+  },
+  {
+    "object": "cup",
+    "attribute": "has Action Related drinkable"
+  },
+  {
+    "object": "cup",
+    "attribute": "is on teatable"
+  },
+  {
+    "object": "cup",
+    "attribute": "is on desk"
+  },
+  {
+    "object": "cup",
+    "attribute": "has Action Related containable"
+  },
+  {
+    "object": "cup",
+    "attribute": "has Action Related graspable"
+  },
+  {
+    "object": "cup",
+    "attribute": "has State empty"
+  },
+  {
+    "object": "cup",
+    "attribute": "has Material stainlesssteel"
+  },
+  {
+    "object": "cup",
+    "attribute": "has Shape cylinder"
+  },
+  {
+    "object": "cup",
+    "attribute": "has Action Related movable"
+  },
+  {
+    "object": "cup",
+    "attribute": "has State opened"
+  }
+]
