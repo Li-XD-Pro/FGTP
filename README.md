@@ -51,17 +51,3 @@ For more information about VirtualHome, please refer to: [VirtualHome](http://vi
 
 ![](.asert/virtualhome2.png)
 
-## 5.COMPARISION WITH VQA
-
-In order to demonstrate in depth how our approach differs from existing visual quizzing (VQA) techniques, we provide an online demo website of the relevant VQA technique. On this platform, readers are able to experience completing a visual quizzing task for themselves, thus understanding the uniqueness and advantages of our approach more intuitively.
-
-[MiniGPT-v2](https://huggingface.co/spaces/Vision-CAIR/MiniGPT-v2)
-
-[LLaVA](https://llava.hliu.cc/)
-
-[mPLUG-Owl](https://modelscope.cn/studios/damo/mPLUG-Owl/summary)
-
-[OFA](https://huggingface.co/spaces/OFA-Sys/OFA-vqa)
-
-[BLIP2](https://huggingface.co/spaces/hysts/BLIP2-with-transformers)
-
