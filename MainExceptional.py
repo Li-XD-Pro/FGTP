@@ -7,11 +7,11 @@ import numpy as np
 import argparse
 import openai
 from ultralytics import YOLO
-from moduls import get_args_parser, ReITR, get_noun_verb, get_groundingdino, task_attribute, gpt, state_detect
+from moduls import get_args_parser, ReITR, get_noun_verb, task_attribute, gpt, state_detect
 
 if __name__ =='__main__':
-    # 0、OpenAI api_key
-    openai.api_key = ""
+    # # 0、OpenAI api_key
+    # openai.api_key = ""
 
     # 1、输入任务
     task = "Please take the cup to the diningtable."
@@ -171,30 +171,30 @@ if __name__ =='__main__':
     print('The_put_limitation: ', put_limitation)
 
     # 12、LLM
-    prompt_task1 = "You are a task planner for service robot. Your aim is to break down high-level task into subtasks for the robot to execute. " \
-             "You can only use actions from the action list ['MoveTo', 'Grasp', 'PickUp', 'PutDown']." \
-             "The meaning of the actions are:" \
-             "MoveTo: move to a target location, including an object or a room." \
-             "Grasp: grasp an object." \
-             "PickUp: pick up an object after grasping it." \
-             "PutDown: put down an object after grasping it." \
-             "The information I give you includes five variables:The_high-level_instruction, The_2D_location, The_environment_scene_graph, The_grasp_limitation, The_put_limitation." \
-             "The meaning of the variables are:"\
-             "The_high-level_instruction: including the operating object and destination location."\
-             "The_2D_location: the location of the operating object, including left or right."\
-             "The_environment_scene_graph: the location of the operating object, also the destination of the first subtask."\
-             "The_grasp_limitation: the limitation of the the action 'Grasp'." \
-             "The_put_limitation: the limitation of the action 'PickUP' and 'PutDown'." \
-             "Example: The high-level instruction: Please take me the apple to the sofa. The object_2D_location: left. The_environment_scene_graph: apple on desk. The_grasp_limitation: Grasp from the parallel. The_put_limitation: PickUP gently. According to The scene_result, the apple in on the 'desk', and the object_2D_location 'left' so 1.MoveTo the left side of the desk.According to The_grasp_limitation, 2.Grasp the apple from the parallel. According to The_put_limitation, 3.PickUp the apple gently.According to the high-level instruction, the destination is the sofa, so 4.MoveTo the sofa. According to The_put_limitation, 5.PutDown the apple gently. The subtask: 1.MoveTo the left side of the desk. 2.Grasp the apple from the parallel. 3.PickUp the apple gently. 4.MoveTo the sofa. 5.PutDown the apple gently." \
-             "You need to break down the task based on the following information, The_high-level_instruction: " + task + ". The_2D_location: " + object_2D_location + ". The_environment_scene_graph: "+ filtered_scene_graph_0[0] + ". The_grasp_limitation: " + str(grasp_limitation) + ". The_put_limitation:" + str(put_limitation) + \
-             "Note: Please fully understand the meaning of the example. You just need to output subtasks just like I do, don't explain anything."
-
-    Planning_result = gpt(prompt_task1)
-    print('Planning_result:\n', Planning_result)
-
-    # 13、将规划的结果写入result/planning.txt
-    file_path = 'result/ExceptionalPlanning.txt'
-    # Writing to the file
-    with open(file_path, 'w') as file:
-        file.write(Planning_result)
-    print("任务规划结果已写入: " + file_path)
+    # prompt_task1 = "You are a task planner for service robot. Your aim is to break down high-level task into subtasks for the robot to execute. " \
+    #          "You can only use actions from the action list ['MoveTo', 'Grasp', 'PickUp', 'PutDown']." \
+    #          "The meaning of the actions are:" \
+    #          "MoveTo: move to a target location, including an object or a room." \
+    #          "Grasp: grasp an object." \
+    #          "PickUp: pick up an object after grasping it." \
+    #          "PutDown: put down an object after grasping it." \
+    #          "The information I give you includes five variables:The_high-level_instruction, The_2D_location, The_environment_scene_graph, The_grasp_limitation, The_put_limitation." \
+    #          "The meaning of the variables are:"\
+    #          "The_high-level_instruction: including the operating object and destination location."\
+    #          "The_2D_location: the location of the operating object, including left or right."\
+    #          "The_environment_scene_graph: the location of the operating object, also the destination of the first subtask."\
+    #          "The_grasp_limitation: the limitation of the the action 'Grasp'." \
+    #          "The_put_limitation: the limitation of the action 'PickUP' and 'PutDown'." \
+    #          "Example: The high-level instruction: Please take me the apple to the sofa. The object_2D_location: left. The_environment_scene_graph: apple on desk. The_grasp_limitation: Grasp from the parallel. The_put_limitation: PickUP gently. According to The scene_result, the apple in on the 'desk', and the object_2D_location 'left' so 1.MoveTo the left side of the desk.According to The_grasp_limitation, 2.Grasp the apple from the parallel. According to The_put_limitation, 3.PickUp the apple gently.According to the high-level instruction, the destination is the sofa, so 4.MoveTo the sofa. According to The_put_limitation, 5.PutDown the apple gently. The subtask: 1.MoveTo the left side of the desk. 2.Grasp the apple from the parallel. 3.PickUp the apple gently. 4.MoveTo the sofa. 5.PutDown the apple gently." \
+    #          "You need to break down the task based on the following information, The_high-level_instruction: " + task + ". The_2D_location: " + object_2D_location + ". The_environment_scene_graph: "+ filtered_scene_graph_0[0] + ". The_grasp_limitation: " + str(grasp_limitation) + ". The_put_limitation:" + str(put_limitation) + \
+    #          "Note: Please fully understand the meaning of the example. You just need to output subtasks just like I do, don't explain anything."
+    #
+    # Planning_result = gpt(prompt_task1)
+    # print('Planning_result:\n', Planning_result)
+    #
+    # # 13、将规划的结果写入result/planning.txt
+    # file_path = 'result/ExceptionalPlanning.txt'
+    # # Writing to the file
+    # with open(file_path, 'w') as file:
+    #     file.write(Planning_result)
+    # print("任务规划结果已写入: " + file_path)
