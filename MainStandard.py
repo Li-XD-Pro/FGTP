@@ -7,7 +7,7 @@ import numpy as np
 import argparse
 import openai
 from ultralytics import YOLO
-from moduls import get_args_parser, ReITR, get_noun_verb, get_groundingdino, task_attribute, gpt, state_detect
+from moduls import get_args_parser, ReITR, get_noun_verb, task_attribute,state_detect,yolov8_detect,gpt
 
 if __name__ =='__main__':
     # 0、OpenAI api_key
@@ -162,7 +162,7 @@ if __name__ =='__main__':
     if 'has Material papermade' in unique_object_attribute:
         put_limitation = 'PickUP stably'
     print('The_put_limitation: ', put_limitation)
-
+    #
     # 12、LLM
     prompt_task1 = "You are a task planner for service robot. Your aim is to break down high-level task into subtasks for the robot to execute. " \
              "You can only use actions from the action list ['MoveTo', 'Grasp', 'PickUp', 'PutDown']." \
