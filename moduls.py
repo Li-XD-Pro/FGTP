@@ -164,8 +164,6 @@ def ReITR(args):
 
     return scene_result
 
-
-
 def get_noun_verb(task_text):
     nlp = spacy.load("en_core_web_sm")
 
@@ -181,35 +179,6 @@ def get_noun_verb(task_text):
     new_sentence = " ".join(verbs + [nouns[0]])
     # print(new_sentence)
     return verbs, [nouns[0]]
-
-
-
-def get_groundingdino(img, categories, ckpt):
-    model = load_model("groundingdino/config/GroundingDINO_SwinT_OGC.py", ckpt)
-
-    TEXT_PROMPT = categories
-    BOX_TRESHOLD = 0.35
-    TEXT_TRESHOLD = 0.25
-
-    # print('type of TEXT_PROMPT: ', type(TEXT_PROMPT))
-    image_source, image = load_image(img)
-
-    boxes, logits, phrases = predict(
-        model=model,
-        image=image,
-        caption=TEXT_PROMPT,
-        box_threshold=BOX_TRESHOLD,
-        text_threshold=TEXT_TRESHOLD
-    )
-
-    # print('boxes:', boxes)
-    # print('logits:', logits)
-    # print('phrases:', phrases)
-
-    annotated_frame = annotate(image_source=image_source, boxes=boxes, logits=logits, phrases=phrases)
-    cv2.imwrite("result/img_detected.jpg", annotated_frame)
-
-    return boxes, logits, phrases
 
 def task_attribute(task_text,attribute_text):
     # 分割变量 attribute_text
@@ -275,12 +244,6 @@ def yolov8_detect(results_yolov8):
     y2 = target_boxes[3]
     return x1, y1, x2, y2
 
-'''
-    功能：检测当前物品的状态是否适合完成任务 
-    思路：先使用YOLOv8检测当前物品的状态，检测到的状态存储在obj_class中，然后计算task与句子"The [noun] is [obj_class]"之间的相似度similarities_values
-         同时，在opposite_class中存储obj_class的相反状态，并计算task与句子"The [noun] is [opposite_class]"之间的相似度opposite_similarities_values
-         比较similarities_values与opposite_similarities_values的大小，若前者大，则当前物品的状态适合完成任务，返回success_flag = 1；若后者大，则当前物品的状态不适合完成任务，返回success_flag = 2
-'''
 def state_detect(results_yolov8, task, noun):
     for r in results_yolov8:
         n = len(r.boxes.cls)
