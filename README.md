@@ -51,3 +51,18 @@ For more information about VirtualHome, please refer to: [VirtualHome](http://vi
 
 ![](.asert/virtualhome2.png)
 
+
+## 5.CITATION
+
+If you find our work useful for your research, please cite:
+
+```
+@article{li2024fine,
+  title={Fine-grained task planning for service robots based on object ontology knowledge via large language models},
+  author={Li, Xiaodong and Tian, Guohui and Cui, Yongcheng},
+  journal={IEEE Robotics and Automation Letters},
+  year={2024},
+  publisher={IEEE}
+}
+```
+
